@@ -1,0 +1,133 @@
+<template>
+    
+
+
+  <div class="box">
+
+    <h1>Norris Jokes Generator</h1>
+   <h2>Here the joke</h2>
+   <div class="boxJoke" v-if="joke ">
+      <h3>{{ joke }}</h3> 
+   </div>
+   
+   
+    <b-link id="button" @click.prevent="getJoke()"> Get a joke </b-link>
+    <div v-if="visibility">
+         <modalConf />
+    </div>
+   
+
+  </div>
+
+</template>
+
+<script>
+import axios from "axios";
+import modalConf from "../components/modalConfirmation.vue";
+export default {
+    name: 'JokeBox',
+    components: {
+        modalConf
+    },
+    
+data() {
+    return {
+        joke: "",
+        visibility: false,
+    }
+},
+methods: {
+getJoke() {
+    
+axios
+.get('https://api.chucknorris.io/jokes/random', {
+    headers: {
+        'authorization': 'Bearer ' + localStorage.getItem('token')
+            }})
+    .then((response) => {
+        
+        this.joke = response.data.value;
+        setTimeout(() => {
+            this.visibility = !this.visibility; 
+        }, 1000)
+        return stop;
+
+       // function stop() {
+         //   if (visibility =! true) {
+           //     clearTimeout(visibility)
+             //   ;
+           // }
+        //}
+       
+       
+    }).then ((res) => {
+        console.log(res);
+    })
+     .catch ((error) => {
+        console.log(error);
+      
+    })
+},
+}
+}
+</script>
+
+
+<style scoped>
+
+.box {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+   position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  flex-direction:column;
+  background-color: rgb(4,4,4);
+  box-shadow: 3px rgb(22, 23, 23);
+  color: rgb(193,165,90);
+  max-width: 100%;
+  border-radius: 5px;
+  animation: appear;
+    animation-delay: 3s;
+    animation-fill-mode: both;
+  
+}
+@keyframes appear {
+    0% {
+        opacity: 0;
+        z-index: 10000;
+   
+    }
+}
+#button {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-width:200px;
+  width: auto;
+  height:70px;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 3px rgb(22, 23, 23);
+  background-color: rgb(193,165,90);
+  color: rgb(4,4,4);
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.1s ease-in;
+  margin-bottom: 10px;
+}
+
+#button:active {
+    transform:scale(0.98);
+}
+.boxJoke {
+    background-color: white;
+    color: rgb(4,4,4);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+</style>
