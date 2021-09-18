@@ -9,13 +9,8 @@
    <div class="boxJoke" v-if="joke ">
       <h3>{{ joke }}</h3> 
    </div>
-   
-   
+
     <b-link id="button" @click.prevent="getJoke()"> Get a joke </b-link>
-    <div v-if="visibility">
-         <modalConf />
-    </div>
-   
 
   </div>
 
@@ -23,20 +18,19 @@
 
 <script>
 import axios from "axios";
-import modalConf from "../components/modalConfirmation.vue";
+
 export default {
     name: 'JokeBox',
-    components: {
-        modalConf
-    },
     
 data() {
     return {
         joke: "",
-        visibility: false,
+ 
     }
 },
 methods: {
+ 
+   
 getJoke() {
     
 axios
@@ -47,19 +41,7 @@ axios
     .then((response) => {
         
         this.joke = response.data.value;
-        setTimeout(() => {
-            this.visibility = !this.visibility; 
-        }, 1000)
-        return stop;
 
-       // function stop() {
-         //   if (visibility =! true) {
-           //     clearTimeout(visibility)
-             //   ;
-           // }
-        //}
-       
-       
     }).then ((res) => {
         console.log(res);
     })

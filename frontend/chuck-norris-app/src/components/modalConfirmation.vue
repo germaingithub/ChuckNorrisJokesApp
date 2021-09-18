@@ -28,7 +28,7 @@ export default {
     data() {
         return {
             visibility:true,
-            timeout:null   
+          
         }
     },
     methods: {

@@ -5,9 +5,9 @@
 
 
 <div class="home">
-    <Loader/>
- 
-   <JokeBox />
+   <Loader/> 
+  <div v-if="visibility"> <ModalConfirmation/> </div>
+  <div @click="show()"> <JokeBox/> </div>
   
 </div>
 </template>
@@ -15,16 +15,29 @@
 
 <script>
 import JokeBox from '../components/JokeBox.vue'
-//import modalConfirmation from '../components/modalConfirmation.vue'
 import  Loader  from '../components/Loader.vue'
+import ModalConfirmation from '../components/modalConfirmation.vue'
 export default {
     name: 'Home',
 
     components: {
-  JokeBox,Loader
+  JokeBox,Loader,ModalConfirmation
 },
+data() {
+        return {
+            visibility:false,
+            timeout: 0  
+        }
+    },
 
-
+methods: {
+ show() {
+   setTimeout(() => {
+     this.visibility = true;
+   }, 5000);
+            
+        },
+},
 
 }
 </script>
