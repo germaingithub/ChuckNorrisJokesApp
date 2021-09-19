@@ -1,10 +1,7 @@
 <template>
-    
-
 
   <div class="box">
-
-    <h1>Norris Jokes Generator</h1>
+   <h1>Norris Jokes Generator</h1>
    <h2>Here the joke</h2>
    <div class="boxJoke" v-if="joke ">
       <h3>{{ joke }}</h3> 
@@ -30,7 +27,6 @@ data() {
 },
 methods: {
  
-   
 getJoke() {
     
 axios
@@ -47,11 +43,9 @@ axios
     })
      .catch ((error) => {
         console.log(error);
-      
     })
 },
-}
-}
+}}
 </script>
 
 
@@ -61,11 +55,11 @@ axios
   display:flex;
   justify-content:center;
   align-items:center;
-   position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   flex-direction:column;
   background-color: rgb(4,4,4);
   box-shadow: 3px rgb(22, 23, 23);
@@ -73,8 +67,8 @@ axios
   max-width: 100%;
   border-radius: 5px;
   animation: appear;
-    animation-delay: 3s;
-    animation-fill-mode: both;
+  animation-delay: 3s;
+  animation-fill-mode: both;
   
 }
 @keyframes appear {
@@ -103,13 +97,13 @@ axios
 }
 
 #button:active {
-    transform:scale(0.98);
+  transform:scale(0.98);
 }
 .boxJoke {
-    background-color: white;
-    color: rgb(4,4,4);
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
+  background-color: white;
+  color: rgb(4,4,4);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
 }
 </style>

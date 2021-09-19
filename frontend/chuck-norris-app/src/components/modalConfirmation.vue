@@ -3,8 +3,6 @@
         <div class="modal">
             <div class="modalTitle">
                 <span> Are you enjoying the jokes of the master?</span>
-
-
             </div>
             <div class="modalBody">
                  <img alt="Chuck Norris" width="300" height="300" src="../assets/chuckN.png">
@@ -12,25 +10,21 @@
                     You must say YES ;)
                 </div>
                 <button @click.prevent="toggleModal" class="confirm">YES, keep going</button>
-
-                <button class="confirm">No, I prefer Superman's jokes. </button>
+                <router-link  class="confirm" to="/boxgold/">No, I prefer Superman's jokes. </router-link>
             </div>
         </div>
-        
     </div>
 </template>
 
 <script>
-
-
 export default {
     name: 'modalConfirmation',
-    data() {
-        return {
-            visibility:true,
-          
-        }
-    },
+        data() {
+            return {
+                visibility:true,
+            
+            }
+        },
     methods: {
         toggleModal() {
             this.visibility = !this.visibility;
@@ -53,34 +47,26 @@ export default {
     z-index: 1000;
     margin: 10px;
 }
-
 .modal {
     background-color: rgb(193,165,90);
     padding: 20px;
     border-radius: 15px;
     color: #444;
 }
-
 .confirm {
-   background: none;
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
-  color: #040505;
-  border-radius: 10px;
-  
-
-  
-  
+    background: none;
+    border: 2px solid;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+    color: #040505;
+    border-radius: 10px;
+    text-decoration: none; 
 }
-  .confirm:hover{
-       box-shadow: 0 0 0 0,inset 4px 4px 4px 4px;
-        background: rgb(193,165,90);
-       
-  }
-
-  
+.confirm:hover{
+    box-shadow: 0 0 0 0,inset 4px 4px 4px 4px;
+    background: rgb(193,165,90);    
+}
 
 </style>
